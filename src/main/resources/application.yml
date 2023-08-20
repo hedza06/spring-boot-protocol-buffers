@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Spring Boot With Protocol Buffers (GRPC)
+  datasource:
+    name: H2 DB Connection
+    url: jdbc:h2:mem:localdb;DATABASE_TO_UPPER=false
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+      open-in-view: false
+      show-sql: true
+      defer-datasource-initialization: true
+      hibernate:
+        ddl-auto: 'create-drop'
+debug: true

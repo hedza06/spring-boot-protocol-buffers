@@ -1,0 +1,47 @@
+// Which syntax this file uses.
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+// Specify the package we want to use for our generated Java classes.
+package com.hedza06.grpc;
+option java_multiple_files = true;
+
+// Request payload
+message GetUserDetailsRequest {
+  int32 id = 1;
+}
+
+// Response payload
+message GetUserDetailsResponse {
+  int32 id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string email = 4;
+  int32 age = 5;
+}
+
+message GetAllUsersResponse {
+  int32 id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string email = 4;
+  int32 age = 5;
+}
+
+message CreateUserRequest {
+  string firstName = 1;
+  string lastName = 2;
+  string email = 3;
+  int32 age = 4;
+}
+
+message CreateUserResponse {
+  int32 id = 1;
+}
+
+service UserService {
+  rpc getDetails(GetUserDetailsRequest) returns (GetUserDetailsResponse) {}
+  rpc create(CreateUserRequest) returns (CreateUserResponse) {}
+  rpc getAll(google.protobuf.Empty) returns (stream GetAllUsersResponse) {}
+}
